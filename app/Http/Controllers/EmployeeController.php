@@ -53,7 +53,7 @@ class EmployeeController extends Controller
             "image"         => "mimes:jpg,png,jpeg",
         ]);
 
-        $filename = "";
+        $filename = "default.png";
 
         if ($request->hasFile('image')) {
             $filename = date('mdYHis') . uniqid() . '.' . $request->image->extension();
@@ -82,6 +82,7 @@ class EmployeeController extends Controller
                 $wife[$i]['name'] = $request['name_wife_' . $i + 1];
                 $wife[$i]['ic'] = $request['ic_wife_' . $i + 1];
                 $wife[$i]['phone_num'] = $request['phone_num_wife_' . $i + 1];
+                $wife[$i]['address'] = $request['address_wife_' . $i + 1];
             }
         }
 
@@ -90,6 +91,7 @@ class EmployeeController extends Controller
                 $child[$i]['name'] = $request['name_child_' . $i + 1];
                 $child[$i]['ic'] = $request['ic_child_' . $i + 1];
                 $child[$i]['phone_num'] = $request['phone_num_child_' . $i + 1];
+                $child[$i]['address'] = $request['address_child_' . $i + 1];
             }
         }
 
@@ -193,6 +195,7 @@ class EmployeeController extends Controller
                 $wife[$i]['name'] = $request['name_wife_' . $i + 1];
                 $wife[$i]['ic'] = $request['ic_wife_' . $i + 1];
                 $wife[$i]['phone_num'] = $request['phone_num_wife_' . $i + 1];
+                $wife[$i]['address'] = $request['address_wife_' . $i + 1];
             }
         }
 
@@ -201,6 +204,7 @@ class EmployeeController extends Controller
                 $child[$i]['name'] = $request['name_child_' . $i + 1];
                 $child[$i]['ic'] = $request['ic_child_' . $i + 1];
                 $child[$i]['phone_num'] = $request['phone_num_child_' . $i + 1];
+                $child[$i]['address'] = $request['address_child_' . $i + 1];
             }
         }
 
