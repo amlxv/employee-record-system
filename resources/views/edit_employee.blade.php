@@ -162,6 +162,11 @@
                                     id="employee_child"
                                     value="{{ $employee->child }}"
                                 />
+                                <input
+                                    type="hidden"
+                                    id="employee_retiring_type"
+                                    value="{{ $employee->retiring_type }}"
+                                />
                                 <div class="">
                                     <div>
                                         <h3
@@ -460,11 +465,9 @@
                                                 Jenis Pencen
                                             </label>
                                             <div class="mt-1">
-                                                <input
-                                                    type="text"
+                                                <select
                                                     name="retiring_type"
                                                     id="retiring_type"
-                                                    autocomplete="postal-code"
                                                     class="
                                                         shadow-sm
                                                         focus:ring-indigo-500
@@ -475,8 +478,33 @@
                                                         border-gray-300
                                                         rounded-md
                                                     "
-                                                    value="{{ $employee->retiring_type ?? old('retiring_type') }}"
-                                                />
+                                                >
+                                                    <option value="">
+                                                        Pilih Jenis Pencen
+                                                    </option>
+                                                    <option
+                                                        value="Pencen Wajib"
+                                                    >
+                                                        Pencen Wajib
+                                                    </option>
+                                                    <option
+                                                        value="Pencen Pilihan"
+                                                    >
+                                                        Pencen Pilihan
+                                                    </option>
+                                                    <option
+                                                        value="Bersara Atas Sebab Kesihatan"
+                                                    >
+                                                        Bersara Atas Sebab
+                                                        Kesihatan
+                                                    </option>
+                                                    <option
+                                                        value="Pencen Kematian Dalam Persaraan"
+                                                    >
+                                                        Pencen Kematian Dalam
+                                                        Persaraan
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="sm:col-span-6">
@@ -886,6 +914,13 @@
 </x-app-layout>
 
 <script>
+    $("document").ready(function () {
+        let matching = $("#employee_retiring_type").val();
+        $("#retiring_type option[value='" + matching + "']").attr(
+            "selected",
+            "selected"
+        );
+    });
     function setWife() {
         let wife = JSON.parse($("#employee_wife").val());
         let wifeCount = $("#wifeCount").val();

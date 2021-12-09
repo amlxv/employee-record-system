@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,14 @@ Route::get('/users', function () {
     return view('users');
 })->middleware(['auth'])->name('users');
 
+
+Route::get('/symlinks', function () {
+    if (!is_dir('../public/storage')) {
+        Artisan::call('storage:link');
+        echo "Successfully created!";
+    } else {
+        return redirect()->route('employee.index');
+    }
+});
 
 require __DIR__ . '/auth.php';
